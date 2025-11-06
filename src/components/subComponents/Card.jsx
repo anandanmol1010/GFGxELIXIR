@@ -15,13 +15,15 @@ gsap.registerPlugin(ScrollTrigger);
 const Cards = () => {
   const sectionRef = useRef(null);
   const videoRef = useRef(null);
+  const contentRef = useRef(null);
   const cardsRef = useRef([]);
 
   useEffect(() => {
     const sectionEl = sectionRef.current;
     const videoEl = videoRef.current;
+    const contentEl = contentRef.current;
 
-    // Pinned video animation
+    // Pinned video timeline
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionEl,
@@ -29,16 +31,15 @@ const Cards = () => {
         end: "bottom+=100% top",
         scrub: 1.5,
         pin: true,
-        pinSpacing: true,
       },
     });
 
-    // Background video zoom + blur
+    // 🎥 Smooth background zoom + blur
     tl.fromTo(
       videoEl,
       { scale: 1, opacity: 1, filter: "blur(0px)" },
       {
-        scale: 1.25,
+        scale: 1.2,
         opacity: 0.4,
         filter: "blur(4px)",
         ease: "power3.inOut",
@@ -46,21 +47,34 @@ const Cards = () => {
       0
     );
 
-    // Smooth blur + fade + slide left for cards
+    // 🔆 Content fade slightly with scroll
+    tl.fromTo(
+      contentEl,
+      { opacity: 1, y: 0 },
+      {
+        opacity: 0.7,
+        y: -50,
+        ease: "power2.inOut",
+      },
+      0.3
+    );
+
+    // 🌀 Cards fade left/right with reversible animation
     gsap.utils.toArray(cardsRef.current).forEach((card, i) => {
       gsap.fromTo(
         card,
         { opacity: 1, x: 0, filter: "blur(0px)" },
         {
           opacity: 0,
-          x: -100,
+          x: i % 2 === 0 ? -100 : 100,
           filter: "blur(8px)",
-          ease: "power3.inOut",
+          ease: "power2.inOut",
           scrollTrigger: {
             trigger: card,
             start: "top 80%",
             end: "bottom top",
-            scrub: true,
+            scrub: 1.5,
+            toggleActions: "play none reverse none", // ✅ Smooth reverse
           },
         }
       );
@@ -131,7 +145,7 @@ const Cards = () => {
       ref={sectionRef}
       className="relative min-h-screen w-full overflow-hidden bg-black text-white"
     >
-      {/* Background Video */}
+      {/* 🎥 Background Video */}
       <div className="absolute inset-0 z-0">
         <video
           ref={videoRef}
@@ -147,10 +161,13 @@ const Cards = () => {
         <div className="absolute inset-0 bg-black/60" />
       </div>
 
-      {/* Foreground Content */}
-      <div className="relative z-20 py-20">
+      {/* 🧭 Foreground Content */}
+      <div
+        ref={contentRef}
+        className="relative z-20 py-24 flex flex-col items-center justify-center"
+      >
         <div className="container mx-auto px-4">
-          {/* Heading */}
+          {/* Header */}
           <div className="text-center mb-16">
             <p className="text-sm text-gray-400 uppercase tracking-widest mb-4 font-light">
               STRATEGIC OPERATIONS CLASSIFICATION
@@ -164,7 +181,7 @@ const Cards = () => {
           </div>
 
           {/* Cards Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {cardData.map((item, i) => (
               <Card
                 key={i}

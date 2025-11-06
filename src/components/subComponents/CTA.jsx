@@ -1,56 +1,109 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "../ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
+import { Sparkles } from "lucide-react";
 
-// CTA Section with Wings of Freedom
+gsap.registerPlugin(ScrollTrigger);
 
 const CTA = () => {
+  const sectionRef = useRef(null);
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    const sectionEl = sectionRef.current;
+    const contentEl = contentRef.current;
+
+    // Zoom + fade effect on scroll
+    gsap.fromTo(
+      sectionEl,
+      { scale: 1.05, opacity: 0 },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionEl,
+          start: "top 90%",
+          end: "bottom top",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      contentEl,
+      { opacity: 0, y: 60 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.4,
+        ease: "power2.out",
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: contentEl,
+          start: "top 85%",
+        },
+      }
+    );
+  }, []);
+
   return (
-    <section className="py-20  from-black via-gray-900 to-black">
-      <div className="container mx-auto px-4 text-center">
-        <Card
-          className="bg-white/5 backdrop-blur-sm border border-white/20 shadow-2xl max-w-2xl mx-auto hover:bg-white/10 transition-all duration-300"
-          data-gsap="zoom-in"
-        >
-          <CardHeader>
-            <div className="mb-4">
-              <div className="text-6xl mb-4 animate-pulse">⚔️</div>
-              <CardTitle className="text-4xl mb-2 text-white font-light tracking-tight">
-                Ready to Face the Titans?
-              </CardTitle>
-            </div>
-            <CardDescription className="text-xl text-gray-300">
-              Join the Survey Corps. Join hundreds of elite developers in
-              humanity&apos;s last stand against the titans of code.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-lg font-semibold transform hover:scale-110 transition-all duration-300 shadow-sm shadow-white/20"
-              >
-                Register Now
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white px-8 py-6 text-lg font-semibold transform hover:scale-110 transition-all duration-300"
-              >
-                Join Discord
-              </Button>
-            </div>
-            <p className="text-sm text-gray-500">
-              Registration closes February 1, 2025
-            </p>
-          </CardContent>
-        </Card>
+    <section
+      ref={sectionRef}
+      className="relative h-[90vh] w-full overflow-hidden bg-black text-white flex items-center justify-center"
+    >
+      {/* 🎥 Background Video */}
+      <video
+        src="https://res.cloudinary.com/djrs8vc5s/video/upload/f_auto,q_auto:good/v1730902345/1106_4_-1_ngskzm.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover opacity-60"
+        style={{ pointerEvents: "none" }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
+
+      {/* ✨ Content */}
+      <div
+        ref={contentRef}
+        className="relative z-10 text-center max-w-3xl mx-auto px-6"
+      >
+        <div className="mb-6 flex justify-center">
+          <Sparkles className="w-10 h-10 text-white animate-pulse" />
+        </div>
+
+        <h2 className="text-5xl md:text-7xl font-light tracking-tight mb-4 leading-tight">
+          Ready to Face the Titans?
+        </h2>
+        <p className="text-lg md:text-xl text-gray-300 mb-10">
+          Join the <span className="text-white font-semibold">Survey Corps</span>.  
+          Unite with elite developers in humanity’s last stand  
+          against the titans of outdated code.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <Button
+            size="lg"
+            className="bg-white text-black hover:bg-gray-200 px-10 py-7 text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+          >
+            Enlist Now
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="border-2 border-white text-white hover:bg-white hover:text-black px-10 py-7 text-lg font-semibold transform hover:scale-105 transition-all duration-300"
+          >
+            Join Discord
+          </Button>
+        </div>
+
+        <p className="mt-8 text-sm text-gray-500 tracking-wide">
+          Registration closes <span className="text-white">February 1, 2025</span>
+        </p>
       </div>
     </section>
   );

@@ -1,110 +1,148 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Award, Sparkles } from "lucide-react";
 import { Separator } from "../ui/separator";
 
-// Prizes Section
+gsap.registerPlugin(ScrollTrigger);
+
 const Prizes = () => {
+  const sectionRef = useRef(null);
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    const sectionEl = sectionRef.current;
+
+    // Fade + scale section on scroll
+    gsap.fromTo(
+      sectionEl,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionEl,
+          start: "top 85%",
+          end: "bottom 40%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    // Animate cards individually
+    gsap.utils.toArray(cardsRef.current).forEach((card, i) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, scale: 0.9, y: 40 },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 1,
+          delay: i * 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            end: "bottom 70%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
+
+    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
+  }, []);
+
   return (
-    <section className="py-20  from-gray-900 to-black">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2
-            className="text-5xl text-white font-light tracking-tight mb-4"
-            data-gsap="fade-down"
-          >
+    <section
+      ref={sectionRef}
+      className="relative py-24 bg-black text-white overflow-hidden"
+    >
+      {/* ✨ Subtle video glow background */}
+      <div className="absolute inset-0">
+        <video
+          src="https://res.cloudinary.com/djrs8vc5s/video/upload/f_auto,q_auto:good/v1730902345/1106_2_-1_ltl6d2.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover opacity-25"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black" />
+      </div>
+
+      {/* 🌟 Content */}
+      <div className="relative z-10 container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-light tracking-tight mb-4">
             Prize Pool
           </h2>
-          <p
-            className="text-xl text-gray-400"
-            data-gsap="fade-up"
-            data-gsap-delay="200"
-          >
-            The spoils of victory
+          <p className="text-lg text-gray-400">
+            The spoils of victory await the bravest coders
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <Card
-            className="bg-black text-white border border-white/20 shadow-2xl hover:scale-105 transform transition-all duration-300"
-            data-gsap="flip-left"
-            data-gsap-delay="100"
-          >
-            <CardHeader className="text-center">
-              <div className="text-6xl mb-4">🥇</div>
-              <CardTitle className="text-3xl text-white">1st Place</CardTitle>
-              <div className="text-4xl text-white  mt-4">₹50,000</div>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <Separator className="bg-white/20" />
-              <p className="text-gray-400">Mentorship + Certificate</p>
-              <p className="text-gray-400">Internship opportunities</p>
-            </CardContent>
-          </Card>
-
-          <Card
-            className="bg-black text-white border border-white/20 shadow-2xl hover:scale-105 transform transition-all duration-300"
-            data-gsap="flip-left"
-            data-gsap-delay="200"
-          >
-            <CardHeader className="text-center">
-              <div className="text-6xl mb-4">🥈</div>
-              <CardTitle className="text-3xl text-white">2nd Place</CardTitle>
-              <div className="text-4xl text-white mt-4">₹30,000</div>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <Separator className="bg-white/20" />
-              <p className="text-gray-400">Mentorship + Certificate</p>
-              <p className="text-gray-400">Interview prep sessions</p>
-            </CardContent>
-          </Card>
-
-          <Card
-            className="bg-black text-white border border-white/20 shadow-2xl hover:scale-105 transform transition-all duration-300"
-            data-gsap="flip-left"
-            data-gsap-delay="300"
-          >
-            <CardHeader className="text-center">
-              <div className="text-6xl mb-4">🥉</div>
-              <CardTitle className="text-3xl text-white">3rd Place</CardTitle>
-              <div className="text-4xl text-white mt-4">₹20,000</div>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <Separator className="bg-white/20" />
-              <p className="text-gray-400">Mentorship + Certificate</p>
-              <p className="text-gray-400">Exclusive swag pack</p>
-            </CardContent>
-          </Card>
+        {/* 🏆 Main 3 Prizes */}
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+          {[
+            { emoji: "🥇", place: "1st Place", amount: "₹50,000", perks: ["Mentorship + Certificate", "Internship opportunities"] },
+            { emoji: "🥈", place: "2nd Place", amount: "₹30,000", perks: ["Mentorship + Certificate", "Interview prep sessions"] },
+            { emoji: "🥉", place: "3rd Place", amount: "₹20,000", perks: ["Mentorship + Certificate", "Exclusive swag pack"] },
+          ].map((p, i) => (
+            <Card
+              key={i}
+              ref={(el) => (cardsRef.current[i] = el)}
+              className="bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl transition-all duration-500 hover:bg-white/10 hover:scale-105"
+            >
+              <CardHeader className="text-center py-8">
+                <div className="text-6xl mb-4">{p.emoji}</div>
+                <CardTitle className="text-2xl md:text-3xl text-white mb-2">{p.place}</CardTitle>
+                <div className="text-3xl md:text-4xl font-semibold text-white mt-2">{p.amount}</div>
+              </CardHeader>
+              <CardContent className="text-center space-y-2">
+                <Separator className="bg-white/10 mb-3" />
+                {p.perks.map((perk, j) => (
+                  <p key={j} className="text-gray-400 text-sm md:text-base">
+                    {perk}
+                  </p>
+                ))}
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mt-8 max-w-4xl mx-auto">
+        {/* 🧿 Additional Awards */}
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <Card
-            className="bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-            data-gsap="zoom-in"
-            data-gsap-delay="400"
+            ref={(el) => (cardsRef.current[3] = el)}
+            className="bg-white/5 backdrop-blur-md border border-white/10 shadow-xl hover:bg-white/10 hover:scale-105 transition-all duration-500"
           >
-            <CardHeader>
-              <Award className="w-8 h-8 text-white mb-2" />
-              <CardTitle className="text-white">Track Winners</CardTitle>
+            <CardHeader className="flex flex-col items-center">
+              <Award className="w-10 h-10 text-yellow-400 mb-3" />
+              <CardTitle className="text-white text-xl">Track Winners</CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-2xl  text-white">₹10,000 × 5</p>
-              <p className="text-gray-400 mt-2">Top project in each track</p>
+            <CardContent className="text-center">
+              <p className="text-2xl font-semibold text-white">₹10,000 × 5</p>
+              <p className="text-gray-400 mt-1 text-sm">Top project in each track</p>
             </CardContent>
           </Card>
 
           <Card
-            className="bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-            data-gsap="zoom-in"
-            data-gsap-delay="500"
+            ref={(el) => (cardsRef.current[4] = el)}
+            className="bg-white/5 backdrop-blur-md border border-white/10 shadow-xl hover:bg-white/10 hover:scale-105 transition-all duration-500"
           >
-            <CardHeader>
-              <Sparkles className="w-8 h-8 text-white mb-2" />
-              <CardTitle className="text-white">Special Awards</CardTitle>
+            <CardHeader className="flex flex-col items-center">
+              <Sparkles className="w-10 h-10 text-blue-400 mb-3" />
+              <CardTitle className="text-white text-xl">Special Awards</CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-2xl  text-white">₹5,000 × 10</p>
-              <p className="text-gray-400 mt-2">
+            <CardContent className="text-center">
+              <p className="text-2xl font-semibold text-white">₹5,000 × 10</p>
+              <p className="text-gray-400 mt-1 text-sm">
                 Most innovative, best design, etc.
               </p>
             </CardContent>

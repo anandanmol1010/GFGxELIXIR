@@ -20,7 +20,7 @@ const MissionTimeline = () => {
       scrollTrigger: {
         trigger: sectionEl,
         start: "top top",
-        end: "bottom+=100% top",
+        end: "bottom+=80% top",
         scrub: 1.5,
         pin: true,
       },
@@ -31,14 +31,14 @@ const MissionTimeline = () => {
       { scale: 1, opacity: 1, filter: "blur(0px)" },
       {
         scale: 1.15,
-        opacity: 0.4,
+        opacity: 0.5,
         filter: "blur(6px)",
         ease: "power3.inOut",
       },
       0
     );
 
-    // 🔁 Alternate fade/slide animations
+    // 🌀 Alternate fade/slide animations
     gsap.utils.toArray(cardsRef.current).forEach((card, i) => {
       const dir = i % 2 === 0 ? -100 : 100;
       gsap.fromTo(
@@ -52,8 +52,8 @@ const MissionTimeline = () => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: card,
-            start: "top 85%",
-            end: "bottom 60%",
+            start: "top 90%",
+            end: "bottom 70%",
             toggleActions: "play none none reverse",
           },
         }
@@ -74,9 +74,9 @@ const MissionTimeline = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen w-full overflow-hidden bg-black text-white py-24"
+      className="relative min-h-screen w-full overflow-hidden bg-black text-white py-16"
     >
-      {/* 🎥 Background */}
+      {/* 🎥 Background Video */}
       <div className="absolute inset-0 z-0">
         <video
           ref={videoRef}
@@ -94,19 +94,21 @@ const MissionTimeline = () => {
 
       {/* 🧭 Foreground */}
       <div className="relative z-20 container mx-auto px-4">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl text-white font-light tracking-tight mb-3">
+        <div className="text-center mb-10">
+          <h2 className="text-4xl md:text-5xl text-white font-light tracking-tight mb-3">
             Mission Timeline
           </h2>
-          <p className="text-lg text-gray-400">The Survey Corps battle plan</p>
+          <p className="text-base md:text-lg text-gray-400">
+            The Survey Corps battle plan
+          </p>
         </div>
 
         {/* Timeline */}
-        <div className="relative max-w-3xl mx-auto">
-          {/* Vertical line */}
-          <div className="absolute left-1/2 top-0 h-full w-0.5 bg-white/25 -translate-x-1/2"></div>
+        <div className="relative max-w-4xl mx-auto">
+          {/* Central vertical line */}
+          <div className="absolute left-1/2 top-0 h-full w-[2px] bg-white/25 -translate-x-1/2"></div>
 
-          <div className="space-y-1">
+          <div className="space-y-1 md:space-y-1">
             {events.map((event, i) => (
               <div
                 key={i}
@@ -115,30 +117,40 @@ const MissionTimeline = () => {
                   i % 2 === 0 ? "justify-start" : "justify-end"
                 }`}
               >
+                {/* Horizontal connector line (from dot to card edge) */}
                 <div
-                  className={`w-[50%] ${
-                    i % 2 === 0 ? "pr-10 text-right" : "pl-10 text-left"
+                  className={`absolute top-1/3 h-[1px] bg-white/30 ${
+                    i % 2 === 0
+                      ? "right-1/2 w-[calc(17%-2rem)]"
+                      : "left-1/2 w-[calc(17%-2rem)]"
+                  }`}
+                ></div>
+
+                {/* Event card */}
+                <div
+                  className={`w-[40%] ${
+                    i % 2 === 0 ? "pr-8 text-right" : "pl-8 text-left"
                   }`}
                 >
-                  <Card className="bg-white/5 backdrop-blur-md border border-white/10 shadow-lg rounded-2xl hover:bg-white/10 transition-all duration-500">
-                    <CardHeader className="px-6 flex flex-col gap-1">
+                  <Card className="bg-white/5 backdrop-blur-md border border-white/10 shadow-lg rounded-xl hover:bg-white/10 transition-all duration-500">
+                    <CardHeader className="px-5 py-3 flex flex-col gap-1">
                       <div className="flex items-center justify-between gap-3">
-                        <CardTitle className="text-lg text-white font-light whitespace-nowrap">
+                        <CardTitle className="text-base md:text-lg text-white font-light whitespace-nowrap">
                           {event.title}
                         </CardTitle>
-                        <Badge className="bg-white text-black text-[0.7rem] font-medium px-3 py-0.5 rounded-full">
+                        <Badge className="bg-white text-black text-[0.65rem] font-medium px-2 py-0.5 rounded-full">
                           {event.date}
                         </Badge>
                       </div>
-                      <CardDescription className="text-gray-300 text-sm leading-relaxed mt-1">
+                      <CardDescription className="text-gray-300 text-xs md:text-sm leading-relaxed mt-1">
                         {event.desc}
                       </CardDescription>
                     </CardHeader>
                   </Card>
                 </div>
 
-                {/* Dot */}
-                <div className="absolute left-1/2 w-3 h-3 rounded-full bg-white/20 -translate-x-1/2 shadow-lg"></div>
+                {/* Center Dot */}
+                {/* <div className="absolute left-1/2 top-1/3 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-white/20 shadow-lg"></div> */}
               </div>
             ))}
           </div>

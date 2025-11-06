@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   Accordion,
   AccordionContent,
@@ -6,114 +8,134 @@ import {
   AccordionTrigger,
 } from "../ui/accordion";
 
-// FAQ Section
+gsap.registerPlugin(ScrollTrigger);
 
 const FAQ = () => {
+  const sectionRef = useRef(null);
+  const itemsRef = useRef([]);
+
+  useEffect(() => {
+    const sectionEl = sectionRef.current;
+
+    // 🎥 Fade in the whole section
+    gsap.fromTo(
+      sectionEl,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionEl,
+          start: "top 85%",
+          end: "bottom 60%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    // 🎞️ Staggered fade-up for each FAQ item
+    gsap.utils.toArray(itemsRef.current).forEach((item, i) => {
+      gsap.fromTo(
+        item,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          delay: i * 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: item,
+            start: "top 90%",
+            end: "bottom 70%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
+
+    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
+  }, []);
+
+  const faqs = [
+    {
+      q: "Who can participate?",
+      a: "Anyone with a passion for coding! Students, professionals, and hobbyists are all welcome. Teams can have 2–4 members.",
+    },
+    {
+      q: "Is there a registration fee?",
+      a: "No, the hackathon is completely free to participate. Just bring your skills and enthusiasm!",
+    },
+    {
+      q: "What do I need to bring?",
+      a: "Bring your laptop, charger, and any tools you need. We’ll provide Wi-Fi, snacks, and energy drinks to keep you going!",
+    },
+    {
+      q: "Can I work on a pre-existing project?",
+      a: "No, all projects must be started fresh during the hackathon. You can use libraries and frameworks, but the core idea must be new.",
+    },
+    {
+      q: "How will projects be judged?",
+      a: "Projects will be judged on innovation, technical complexity, user experience, and presentation by industry experts.",
+    },
+    {
+      q: "Will the event be online or offline?",
+      a: "The hackathon will be hybrid — both online and offline options are available. Join us at the venue or remotely.",
+    },
+  ];
+
   return (
-    <section className="py-20 bg-black">
-      <div className="container mx-auto px-4 max-w-3xl">
-        <div className="text-center mb-12">
-          <h2
-            className="text-5xl text-white font-light tracking-tight mb-4"
-            data-gsap="fade-down"
-          >
+    <section
+      ref={sectionRef}
+      className="relative py-24 text-white overflow-hidden"
+    >
+      {/* 🎥 Subtle looping video background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          src="https://res.cloudinary.com/djrs8vc5s/video/upload/f_auto,q_auto:good/v1730902345/1106_2_-1_ltl6d2.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover opacity-25"
+          style={{ pointerEvents: "none" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90" />
+      </div>
+
+      {/* 📘 Content */}
+      <div className="relative z-10 container mx-auto px-4 max-w-3xl">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-light tracking-tight mb-3">
             Frequently Asked Questions
           </h2>
-          <p
-            className="text-xl text-gray-400"
-            data-gsap="fade-up"
-            data-gsap-delay="200"
-          >
-            Everything you need to know
-          </p>
+          <p className="text-lg text-gray-400">Everything you need to know</p>
         </div>
 
+        {/* Accordion */}
         <Accordion
           type="single"
           collapsible
           className="w-full space-y-4"
-          data-gsap="fade-up"
         >
-          <AccordionItem
-            value="item-1"
-            className="bg-white/5 backdrop-blur-sm border border-white/10 px-6 rounded-lg hover:bg-white/10 transition-all duration-300"
-          >
-            <AccordionTrigger className="text-left font-normal text-white hover:text-gray-300">
-              Who can participate?
-            </AccordionTrigger>
-            <AccordionContent className="text-gray-400">
-              Anyone with a passion for coding! Students, professionals, and
-              hobbyists are all welcome. Teams can have 2-4 members.
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem
-            value="item-2"
-            className="bg-white/5 backdrop-blur-sm border border-white/10 px-6 rounded-lg hover:bg-white/10 transition-all duration-300"
-          >
-            <AccordionTrigger className="text-left text-white hover:text-gray-300 font-normal">
-              Is there a registration fee?
-            </AccordionTrigger>
-            <AccordionContent className="text-gray-400">
-              No, the hackathon is completely free to participate. Just bring
-              your skills and enthusiasm!
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem
-            value="item-3"
-            className="bg-white/5 backdrop-blur-sm border border-white/10 px-6 rounded-lg hover:bg-white/10 transition-all duration-300"
-          >
-            <AccordionTrigger className="text-left text-white hover:text-gray-300 font-normal">
-              What do I need to bring?
-            </AccordionTrigger>
-            <AccordionContent className="text-gray-400">
-              Bring your laptop, charger, and any tools you need. We&apos;ll
-              provide wifi, snacks, and energy drinks to keep you going!
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem
-            value="item-4"
-            className="bg-white/5 backdrop-blur-sm border border-white/10 px-6 rounded-lg hover:bg-white/10 transition-all duration-300"
-          >
-            <AccordionTrigger className="text-left font-normal text-white hover:text-gray-300">
-              Can I work on a pre-existing project?
-            </AccordionTrigger>
-            <AccordionContent className="text-gray-400">
-              No, all projects must be started fresh during the hackathon. You
-              can use libraries and frameworks, but the core idea and
-              implementation must be new.
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem
-            value="item-5"
-            className="bg-white/5 backdrop-blur-sm border border-white/10 px-6 rounded-lg hover:bg-white/10 transition-all duration-300"
-          >
-            <AccordionTrigger className="text-left font-normal text-white hover:text-gray-300">
-              How will projects be judged?
-            </AccordionTrigger>
-            <AccordionContent className="text-gray-400">
-              Projects will be judged on innovation, technical complexity, user
-              experience, and presentation. Each track will have industry
-              experts as judges.
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem
-            value="item-6"
-            className="bg-white/5 backdrop-blur-sm border border-white/10 px-6 rounded-lg hover:bg-white/10 transition-all duration-300"
-          >
-            <AccordionTrigger className="text-left font-normal text-white hover:text-gray-300">
-              Will the event be online or offline?
-            </AccordionTrigger>
-            <AccordionContent className="text-gray-400">
-              The hackathon will be hybrid - both online and offline options
-              available. Join us at our venue or participate from anywhere in
-              the world.
-            </AccordionContent>
-          </AccordionItem>
+          {faqs.map((faq, i) => (
+            <AccordionItem
+              key={i}
+              ref={(el) => (itemsRef.current[i] = el)}
+              value={`item-${i}`}
+              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-lg hover:bg-white/10 transition-all duration-300"
+            >
+              <AccordionTrigger className="text-left font-normal text-white px-6 py-4 hover:text-gray-300 text-lg">
+                {faq.q}
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-400 px-6 pb-4 text-sm leading-relaxed">
+                {faq.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
         </Accordion>
       </div>
     </section>
