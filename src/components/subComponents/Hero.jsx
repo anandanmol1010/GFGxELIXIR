@@ -103,7 +103,7 @@ const Hero = () => {
           <Button
             size="lg"
             variant="outline"
-            className="border-2 border-white text-white hover:bg-white hover:text-black px-10 py-6 text-lg tracking-wide font-semibold transition-colors"
+            className="border-2 border-white text-white hover:bg-white px-10 py-6 text-lg tracking-wide font-semibold transition-colors"
           >
             <Code className="mr-2 w-5 h-5" /> Mission Briefing
           </Button>

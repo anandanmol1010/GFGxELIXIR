@@ -74,7 +74,7 @@ const Cards = () => {
             start: "top 50%",
             end: "bottom -10%",
             scrub: true,
-            markers: true,
+            // markers: true,
             toggleActions: "play none reverse none", // ✅ Smooth reverse
           },
         }
