@@ -69,18 +69,18 @@ const About = () => {
             Developers unite, adapt, and rise beyond all boundaries.
           </p>
 
-          <div className="grid grid-cols-2 gap-4 text-left">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left">
             {aboutData.map((item, idx) => (
               <div
                 key={idx}
-                className="flex items-start gap-3 bg-white/5 p-3 rounded-md border border-white/10 hover:bg-white/10 transition-all duration-300"
+                className="flex items-center gap-3 bg-white/5 p-3 rounded-md border border-white/10 hover:bg-white/10 transition-all duration-300 overflow-hidden"
               >
-                {item.icon}
-                <div>
-                  <h3 className="font-semibold text-white text-lg">
+                <div className="flex-shrink-0">{item.icon}</div>
+                <div className="min-w-0">
+                  <h3 className="font-semibold text-white text-sm md:text-base truncate">
                     {item.title}
                   </h3>
-                  <p className="text-gray-400 text-sm">{item.text}</p>
+                  <p className="text-gray-400 text-xs md:text-sm line-clamp-2">{item.text}</p>
                 </div>
               </div>
             ))}
