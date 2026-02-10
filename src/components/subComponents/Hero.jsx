@@ -64,6 +64,9 @@ const Hero = () => {
             size="lg"
             variant="outline"
             className="border-2 border-white text-white hover:bg-white px-6 sm:px-10 py-5 sm:py-6 text-base sm:text-lg font-semibold tracking-wide"
+            onClick={() => {
+              document.getElementById('mission-briefing').scrollIntoView({ behavior: 'smooth' });
+            }}
           >
             <Code className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
             Mission Briefing

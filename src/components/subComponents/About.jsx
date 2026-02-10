@@ -56,8 +56,8 @@ const About = () => {
             <span className="text-white font-semibold">
               GeeksforGeeks X Elixir Scout Regiment
             </span>{" "}
-            commences its mission to reclaim humanity’s digital realm — a
-            72-hour operation to push past the limits of innovation.
+            commences its mission to reclaim humanity’s digital realm, a
+            36-hour operation to push past the limits of innovation.
           </p>
 
           <p className="text-base md:text-lg leading-relaxed">

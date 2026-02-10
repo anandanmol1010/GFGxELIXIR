@@ -28,7 +28,7 @@ const Footer = () => {
               </p>
               <p className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-white/70" />
-                72 Hours of Innovation
+                36 Hours of Innovation
               </p>
             </div>
           </div>

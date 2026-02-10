@@ -18,7 +18,7 @@ export default function Home() {
         <Hero />
       </section>
 
-      <section id="about" className="relative z-10">
+      <section id="mission-briefing" className="relative z-10">
         <About />
       </section>
 
@@ -26,7 +26,7 @@ export default function Home() {
         <Cards />
       </section>
 
-      <section id="section" className="relative z-10">
+      <section id="timeline" className="relative z-10">
         <MissionTimeline />
       </section>
 
