@@ -121,8 +121,8 @@ const Cards = () => {
           </p>
         </div>
 
-        {/* Cards - Horizontal Layout */}
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-3 xl:gap-6 max-w-full px-4 mx-auto">
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:flex xl:flex-row gap-4 lg:gap-5 xl:gap-6 max-w-full px-4 mx-auto">
           {cardData.map((item, i) => (
             <div
               key={i}
@@ -130,8 +130,8 @@ const Cards = () => {
               className={`
                 group relative cursor-pointer
                 transition-all duration-700 ease-out
-                flex-1
-                ${activeCard === i ? "lg:flex-[1.5]" : "lg:flex-1"}
+                hover:scale-[1.03] xl:hover:scale-100
+                ${activeCard === i ? "xl:flex-[1.5]" : "xl:flex-1"}
               `}
               onMouseEnter={() => setActiveCard(i)}
               onMouseLeave={() => setActiveCard(null)}
@@ -160,7 +160,7 @@ const Cards = () => {
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10 p-6 lg:p-8 text-center lg:text-left flex flex-col items-center lg:items-start">
+                <div className="relative z-10 p-6 lg:p-8 text-center md:text-left flex flex-col items-center md:items-start">
                   {/* Icon */}
                   <div className="mb-6">
                     <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center group-hover:bg-white/15 group-hover:border-white/20 group-hover:scale-110 transition-all duration-500">
@@ -181,7 +181,7 @@ const Cards = () => {
                   </h3>
 
                   {/* Tagline */}
-                  <p className="text-white/40 text-sm font-light opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-500 h-10 overflow-hidden">
+                  <p className="text-white/40 text-sm font-light opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 h-10 overflow-hidden">
                     {item.tagline}
                   </p>
                 </div>
