@@ -1,5 +1,5 @@
 import { Separator } from "../ui/separator";
-import { Calendar, Clock, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Calendar, Clock, Github, Instagram, Linkedin, Mail, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -24,11 +24,11 @@ const Footer = () => {
             <div className="space-y-3 text-gray-400">
               <p className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-white/70" />
-                Feb 15 – 17, 2025
+                March 28 – 29, 2026
               </p>
               <p className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-white/70" />
-                72 Hours of Innovation
+                36 Hours of Innovation
               </p>
             </div>
           </div>
@@ -65,6 +65,7 @@ const Footer = () => {
                   { icon: Github, href: "#" },
                   { icon: Twitter, href: "#" },
                   { icon: Linkedin, href: "#" },
+                  { icon: Instagram, href: "https://www.instagram.com/elixirtechcommunity?igsh=MXdwc2o5cmR4MWVk" },
                 ].map(({ icon: Icon, href }, i) => (
                   <a
                     key={i}
@@ -83,7 +84,7 @@ const Footer = () => {
 
         <div className="text-center space-y-2">
           <p className="text-gray-500 text-sm tracking-wide">
-            &copy; 2025{" "}
+            &copy; 2026{" "}
             <span className="text-white">GfG × Elixir Tech Community</span>. All
             rights reserved.
           </p>

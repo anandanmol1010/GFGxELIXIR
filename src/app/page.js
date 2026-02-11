@@ -8,6 +8,8 @@ import FAQ from "@/components/subComponents/FAQ";
 import CTA from "@/components/subComponents/CTA";
 import Footer from "@/components/subComponents/Footer";
 import MissionTimeline from "@/components/subComponents/MissionTimeline";
+import SmallSponsor from "@/components/subComponents/SmallSponsor";
+// import BigSponsor from "@/components/subComponents/BigSponsor";
 
 export default function Home() {
   return (
@@ -16,7 +18,7 @@ export default function Home() {
         <Hero />
       </section>
 
-      <section id="about" className="relative z-10">
+      <section id="mission-briefing" className="relative z-10">
         <About />
       </section>
 
@@ -24,8 +26,13 @@ export default function Home() {
         <Cards />
       </section>
 
-      <section id="section" className="relative z-10">
+      <section id="timeline" className="relative z-10">
         <MissionTimeline />
+      </section>
+
+      <section id="section" className="relative z-10">
+        <SmallSponsor />
+        {/* <BigSponsor /> */}
       </section>
 
       <section id="prizes" className="relative z-10">

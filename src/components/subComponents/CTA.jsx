@@ -94,13 +94,15 @@ const CTA = () => {
           >
             Enlist Now
           </Button>
+          <a href="https://discord.gg/yTxvuuktdZ" target="blank">
           <Button
             size="lg"
             variant="outline"
-            className="border-2 border-white text-white hover:bg-white hover:text-black px-10 py-7 text-lg font-semibold transform hover:scale-105 transition-all duration-300"
-          >
+            className="border-2 border-white text-white hover:bg-white px-10 py-7 text-lg font-semibold transform hover:scale-105 transition-all duration-300"
+            >
             Join Discord
           </Button>
+            </a>
         </div>
 
         <p className="mt-8 text-sm text-gray-500 tracking-wide">

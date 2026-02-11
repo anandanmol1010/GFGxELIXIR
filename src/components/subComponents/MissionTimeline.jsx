@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { DM_Sans } from "next/font/google";
 import { Timeline } from "@/components/ui/timeline";
+import { timelineData } from "@/lib/data/data";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,82 +50,6 @@ const MissionTimeline = () => {
     };
   }, []);
 
-  const data = [
-    {
-      title: "15 Feb - 15 Mar ",
-      content: (
-        <div>
-          <p
-            className={`${bodyFont.className} mb-4 text-xs font-semibold text-white/80 md:text-sm`}
-          >
-            Registration Opens
-          </p>
-          <p className={`${bodyFont.className} text-xs text-white/60 md:text-sm`}>
-            Sign up starts now! Get ready for an amazing hackathon experience.
-          </p>
-        </div>
-      ),
-    },
-    // {
-    //   title: "Feb 1",
-    //   content: (
-    //     <div>
-    //       <p className="mb-4 text-xs font-normal text-white/80 md:text-sm">
-    //         Deadline Extended
-    //       </p>
-    //       <p className="text-xs text-white/60 md:text-sm">
-    //         Last chance to register! Don't miss this opportunity.
-    //       </p>
-    //     </div>
-    //   ),
-    // },
-    {
-      title: "28 Mar",
-      content: (
-        <div>
-          <p
-            className={`${bodyFont.className} mb-4 text-xs font-semibold text-white/80 md:text-sm`}
-          >
-            Hackathon Begins
-          </p>
-          <p className={`${bodyFont.className} text-xs text-white/60 md:text-sm`}>
-            Coding, innovation, and collaboration starts now!
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "29 Mar",
-      content: (
-        <div>
-          <p
-            className={`${bodyFont.className} mb-4 text-xs font-semibold text-white/80 md:text-sm`}
-          >
-            Submissions Due
-          </p>
-          <p className={`${bodyFont.className} text-xs text-white/60 md:text-sm`}>
-            Final demos presented. Show us what you've built!
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "29 Mar",
-      content: (
-        <div>
-          <p
-            className={`${bodyFont.className} mb-4 text-xs font-semibold text-white/80 md:text-sm`}
-          >
-            Results & Awards
-          </p>
-          <p className={`${bodyFont.className} text-xs text-white/60 md:text-sm`}>
-            Winners announced! Celebrate the amazing projects and innovations.
-          </p>
-        </div>
-      ),
-    },
-  ];
-
   return (
     <section
       ref={sectionRef}
@@ -149,7 +74,7 @@ const MissionTimeline = () => {
       </div>
 
       <div className="relative z-10">
-        <Timeline data={data} />
+        <Timeline data={timelineData} />
       </div>
     </section>
   );
