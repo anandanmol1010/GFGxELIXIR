@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { Audiowide } from "next/font/google";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
-import { Code, Target } from "lucide-react";
+import { Code, Target, ExternalLink } from "lucide-react";
 import { animatePinnedSection, cleanupScrollTriggers } from "@/lib/gsap-utils";
 import CountdownTimer from "./CountdownTimer";
 
@@ -43,7 +43,7 @@ const Hero = () => {
 
       <div
         ref={contentRef}
-        className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4 space-y-5"
+        className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4 space-y-5 pt-15 sm:pt-22"
       >
         <Badge className="px-4 py-2 text-xs sm:text-sm bg-white/10 backdrop-blur-sm border-white/20 text-white shadow-lg">
           COMMAND BRANCH: GEEKSFORGEEKS X ELIXIR
@@ -80,6 +80,15 @@ const Hero = () => {
           >
             <Code className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
             Mission Briefing
+          </Button>
+
+          <Button
+            size="lg"
+            className="bg-black/80 text-white hover:bg-black px-6 sm:px-10 py-5 sm:py-7 text-base sm:text-lg font-semibold tracking-wide border border-white/10"
+            onClick={() => window.open('https://www.elixircommunity.in/', '_blank')}
+          >
+            <ExternalLink className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
+            Elixir Website
           </Button>
         </div>
 

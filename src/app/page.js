@@ -1,5 +1,6 @@
 "use client";
 
+import SpotlightNavbar from "@/components/subComponents/SpotlightNavbar";
 import Hero from "@/components/subComponents/Hero";
 import About from "@/components/subComponents/About";
 import Cards from "@/components/subComponents/Card";
@@ -9,30 +10,31 @@ import CTA from "@/components/subComponents/CTA";
 import Footer from "@/components/subComponents/Footer";
 import MissionTimeline from "@/components/subComponents/MissionTimeline";
 import SmallSponsor from "@/components/subComponents/SmallSponsor";
-// import BigSponsor from "@/components/subComponents/BigSponsor";
+
 
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-black text-white overflow-x-hidden">
+      <SpotlightNavbar />
+
       <section id="hero" className="relative z-10">
         <Hero />
       </section>
 
-      <section id="mission-briefing" className="relative z-10">
+      <section id="mission-briefing" className="relative z-10 scroll-mt-12">
         <About />
       </section>
 
-      <section id="cards" className="relative z-10">
+      <section id="tracks" className="relative z-10">
         <Cards />
       </section>
 
-      <section id="timeline" className="relative z-10">
+      <section id="timeline" className="relative z-10 scroll-mt-12">
         <MissionTimeline />
       </section>
 
-      <section id="section" className="relative z-10">
+      <section id="sponsors" className="relative z-10">
         <SmallSponsor />
-        {/* <BigSponsor /> */}
       </section>
 
       <section id="prizes" className="relative z-10">
@@ -43,7 +45,7 @@ export default function Home() {
         <FAQ />
       </section>
 
-      <section id="cta" className="relative z-10">
+      <section id="contact" className="relative z-10">
         <CTA />
       </section>
 
