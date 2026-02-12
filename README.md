@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GfG × Elixir Hackathon
+
+A hackathon website built with Next.js 16, featuring immersive animations, real-time and comprehensive event information for an unforgettable developer experience.
+
+## Features
+
+- **Responsive Design**: Mobile-first approach with adaptive layouts
+- **Interactive Animations**: GSAP-powered scroll animations and smooth transitions
+- **Real-time Countdown**: Live countdown timer to hackathon commencement
+- **Modern UI**: Dark theme with gradient accents and glassmorphism effects
+- **Performance Optimized**: Lightning-fast load times with Next.js optimizations
+- **Component Architecture**: Modular React components with reusable UI elements
+- **Multi-section Layout**: Hero, About, Tracks, Timeline, Sponsors, Prizes, FAQ, Contact
+
+## Tech Stack
+
+### Frontend
+
+- Next.js 16 - React framework with App Router
+- React 19 - UI library with modern hooks
+- JavaScript - ES6+ with modern syntax
+
+### Styling & UI
+
+- Tailwind CSS 4 - Utility-first CSS framework
+- shadcn/ui - Component library built on Radix UI
+- GSAP - Animation library for advanced interactions
+- Framer Motion - Additional animation capabilities
+
+### Development Tools
+
+- ESLint - Code linting with Next.js configuration
+- PostCSS - CSS processing with Tailwind plugin
+- Bun - Ultra-fast package manager
+
+### Fonts & Icons
+
+- Geist Sans & Mono - Modern font family from Vercel
+- Lucide React - Comprehensive icon library
+- Google Fonts - Audiowide, Bebas Neue, DM Sans
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ (required for Next.js 16)
+- Bun package manager (recommended - detected via bun.lock file)
+- Git for version control
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clone the repository
+git clone <repository-url>
+
+# Navigate to the project directory
+cd gfg-x-elixir
+
+# Install dependencies using Bun (recommended)
+bun install
+
+# Alternatively, use npm if Bun is not available
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Environment Setup
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+This project is designed as a static marketing site and does not require environment variables for basic functionality. All configuration is handled through the application code and build process.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Run Locally
 
-## Learn More
+```bash
+# Using Bun (recommended)
+bun run dev
 
-To learn more about Next.js, take a look at the following resources:
+# Using npm
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Usage
 
-## Deploy on Vercel
+### Development
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+bun run dev      # Start development server with hot reload
+bun run lint     # Run ESLint for code quality checks
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Production
+
+```bash
+bun run build    # Create optimized production build
+bun run start    # Start production server
+```
+
+
+> **Note**: Contribution guidelines are not explicitly defined in the repository. Feel free to submit issues and pull requests following standard open-source practices.
+
+## Support & Maintenance
+
+This project is maintained as part of the **GfG × Elixir Hackathon 2025** initiative.
+
+### Getting Help
+
+- **GitHub Issues**: Check the repository's Issues tab for bug reports and feature requests
+- **Code Review**: Review the codebase structure for understanding component architecture
+- **Documentation**: Refer to Next.js documentation for framework-specific questions
+
+### Maintenance
+
+The project follows modern web development practices with regular updates to dependencies and frameworks. Key areas include:
+
+- Security updates and dependency patches
+- Performance optimization and user experience improvements
+- Feature enhancements based on hackathon requirements
+
+> **Disclaimer**: Specific support contact information is not explicitly defined in the repository. Please use GitHub Issues for formal support requests.
