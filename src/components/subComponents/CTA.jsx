@@ -66,7 +66,7 @@ const CTA = () => {
         <div className="mb-6 flex justify-center">
             <div className="relative w-24 h-24 animate-pulse">
               <Image 
-                src="/Steller A.png" 
+                src="/Steller A.webp" 
                 alt="Stellaris Icon" 
                 fill
                 className="object-contain"

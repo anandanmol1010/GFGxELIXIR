@@ -73,12 +73,12 @@ const About = () => {
           style={{ 
             x, 
             y,
-            cursor: "url('/asteroid-cursor.svg') 16 16, move" 
+            cursor: "url('/asteroid-cursor.webp') 16 16, move" 
           }}
           whileTap={{ scale: 0.95 }}
         >
           <img 
-            src="/astro.2.png" 
+            src="/astro.2.webp" 
             alt="Astronaut" 
             className="w-full max-w-[650px] object-contain drop-shadow-[0_0_15px_rgba(0,128,255,0.3)] animate-astro-float brightness-85 pointer-events-none"
           />

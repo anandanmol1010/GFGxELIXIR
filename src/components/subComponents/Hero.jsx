@@ -49,7 +49,7 @@ const Hero = () => {
           {/* The Image is now absolute, so its "transparent border" won't push anything */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none translate-x-5 translate-y-11">
             <Image 
-              src="/stellaris logo.png" 
+              src="/stellaris logo.webp" 
               alt="Stellaris Logo" 
               width={1200}
               height={400}

@@ -84,7 +84,7 @@ export function SpotlightNavbar({
             className="focus:outline-none"
           >
             <Image 
-              src="/Steller A.png" 
+              src="/Steller A.webp" 
               alt="Stellaris Logo"
               width={150} 
               height={40} 
