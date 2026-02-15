@@ -51,7 +51,8 @@ const SmallSponsor = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6"> */}
+        <div className="flex justify-center items-center gap-6">
           {sponsorsData.map((sponsor, i) => (
             <div
               key={i}
