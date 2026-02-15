@@ -56,7 +56,7 @@ const SmallSponsor = () => {
             <div
               key={i}
               ref={(el) => (cardsRef.current[i] = el)}
-              className="group relative"
+              className="group relative bg-gray-800/20"
             >
               <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="w-full h-[2px] bg-blue-400/50 shadow-[0_0_15px_rgba(59,130,246,0.8)] animate-[scan_2s_linear_infinite]" />

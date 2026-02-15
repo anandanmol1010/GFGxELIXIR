@@ -181,7 +181,7 @@ export const timelineData = [
 
 export const sponsorsData = [
     { tier: "India Blockchain Week 2024", image: "/sponsors/ibw.svg", glow: "from-blue-500/20" },
-    { tier: "Devfolio", image: "/sponsors/Devfolio.png", glow: "from-cyan-500/20" },
+    { tier: "Devfolio Logo", image: "/sponsors/DevfolioDArk.png", glow: "from-cyan-500/20" },
     { tier: "QuillAudits", image: "/sponsors/QuillAudit.webp", glow: "from-purple-500/20" },
     { tier: "ETHIndia", image: "/sponsors/ethindia-logo.svg", glow: "from-pink-500/20" },
     { tier: "Polygon", image: "/sponsors/Polygon.svg", glow: "from-indigo-500/20" },

@@ -66,7 +66,7 @@ const Hero = () => {
         <h2
           className={`${audiowide.className} text-xl sm:text-2xl md:text-3xl text-white/90 tracking-[0.05em] leading-tight`}
         >
-          BREAK THROUGH THE WALLS OF INNOVATION
+          TRANSCEND THE CODE, CONQUER THE COSMOS.
         </h2>
 
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 w-full sm:w-auto px-2">

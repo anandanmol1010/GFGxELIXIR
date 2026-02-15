@@ -78,13 +78,12 @@ const CTA = () => {
           className={`${sectionHeadingFont.className} text-5xl md:text-7xl tracking-[0.08em] uppercase mb-4 leading-tight`}
         >
           <span className="bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
-            Ready to Face the Titans?
+            Ready to Face the Unknown?
           </span>
         </h2>
         <p className="text-lg md:text-xl text-gray-300 mb-10">
-          Join the <span className="text-white font-semibold">Survey Corps</span>.  
-          Unite with elite developers in humanity’s last stand  
-          against the titans of outdated code.
+          Join the <span className="text-white font-semibold">Stellar  Corps</span>.  
+          Lock orbits with the galaxy&apos;s brightest minds, and code your way to the singularity of innovation.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
