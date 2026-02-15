@@ -10,6 +10,7 @@ import CTA from "@/components/subComponents/CTA";
 import Footer from "@/components/subComponents/Footer";
 import MissionTimeline from "@/components/subComponents/MissionTimeline";
 import SmallSponsor from "@/components/subComponents/SmallSponsor";
+import BigSponsor from "@/components/subComponents/BigSponsor";
 
 export default function Home() {
   return (
@@ -31,6 +32,10 @@ export default function Home() {
       <section id="timeline" className="relative z-10 scroll-mt-20">
         <MissionTimeline />
       </section>
+
+      {/* <section id="sponsors" className="relative z-10 scroll-mt-20">
+        <BigSponsor />
+      </section> */}
 
       <section id="sponsors" className="relative z-10 scroll-mt-20">
         <SmallSponsor />

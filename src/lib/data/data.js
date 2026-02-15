@@ -163,12 +163,13 @@ export const timelineData = [
 ];
 
 export const sponsorsData = [
-  { tier: "India Blockchain Week 2024", alt: "India Blockchain Week 2024", image: "/sponsors/ibw.svg", glow: "from-blue-500/20" },
+  // { tier: "India Blockchain Week 2024", alt: "India Blockchain Week 2024", image: "/sponsors/ibw.svg", glow: "from-blue-500/20" },
   { tier: "Devfolio", alt: "Devfolio Logo", image: "/sponsors/DevfolioDark.webp", glow: "from-cyan-500/20" },
-  { tier: "QuillAudits", alt: "QuillAudits", image: "/sponsors/QuillAudit.webp", glow: "from-purple-500/20" },
-  { tier: "ETHIndia", alt: "ETHIndia", image: "/sponsors/ethindia-logo.svg", glow: "from-pink-500/20" },
-  { tier: "Polygon", alt: "Polygon", image: "/sponsors/Polygon.svg", glow: "from-indigo-500/20" },
+  // { tier: "QuillAudits", alt: "QuillAudits", image: "/sponsors/QuillAudit.webp", glow: "from-purple-500/20" },
+  // { tier: "ETHIndia", alt: "ETHIndia", image: "/sponsors/ethindia-logo.svg", glow: "from-pink-500/20" },
+  // { tier: "Polygon", alt: "Polygon", image: "/sponsors/Polygon.svg", glow: "from-indigo-500/20" },
 ];
+
 
 export const navItems = [
     { label: "Home", href: "#hero" },
