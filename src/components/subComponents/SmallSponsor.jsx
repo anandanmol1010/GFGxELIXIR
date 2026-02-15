@@ -47,7 +47,8 @@ const SmallSponsor = () => {
             <div className="h-[1px] w-12 bg-blue-500/50" />
           </div>
           <h2 className="text-5xl md:text-7xl font-extralight tracking-tighter uppercase italic">
-            Silver <span className="font-bold bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">Sponsors</span>
+            Silver 
+            {/* <span className="font-bold bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">Sponsors</span> */}
           </h2>
         </div>
 
