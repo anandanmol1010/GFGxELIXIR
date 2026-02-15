@@ -104,7 +104,7 @@ const Prizes = () => {
   const winners = [
     {
       place: "1st Place",
-      amount: "₹50,000",
+      amount: "500 $",
       icon: Trophy,
       color: "text-yellow-100",
       spotlight: "rgba(253, 224, 71, 0.2)",
@@ -115,7 +115,7 @@ const Prizes = () => {
     },
     {
       place: "2nd Place",
-      amount: "₹30,000",
+      amount: "300 $",
       icon: Crown,
       color: "text-slate-200",
       spotlight: "rgba(226, 232, 240, 0.2)",
@@ -126,7 +126,7 @@ const Prizes = () => {
     },
     {
       place: "3rd Place",
-      amount: "₹20,000",
+      amount: "200 $",
       icon: Award,
       color: "text-orange-100",
       spotlight: "rgba(253, 186, 116, 0.2)",
